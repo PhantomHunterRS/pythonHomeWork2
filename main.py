@@ -1,16 +1,25 @@
-# This is a sample Python script.
+import pandas as pd
+import random
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def printed(list):
+    print(f'Index  | Robot | Human')
+    for idx, value in enumerate(list):
+        if idx < 10:
+            if value == 'robot':
+                print(f'0{idx}     |   1   |   0   ')
+            else:
+                print(f'0{idx}     |   0   |   1   ')
+        else:
+            if value == 'robot':
+                print(f'{idx}     |   1   |   0   ')
+            else:
+                print(f'{idx}     |   0   |   1   ')
 
+def createList():
+    lst = ['robot'] * 10
+    lst += ['human'] * 10
+    random.shuffle(lst)
+    data = pd.DataFrame({'whoAmI':lst})
+    return lst
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+printed(createList())
